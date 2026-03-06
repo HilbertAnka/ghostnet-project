@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title>Shea Sepherd</title>
+        <title>Ghostnet Shea Sepherd</title>
         
     </h:head>
 
@@ -15,8 +15,57 @@
 
             <!-- Title and Subtitle -->
             <h1 class="home-title">Shea Sepherd</h1>
-            <h2 class="home-subtitle">Geisternetze bergen - Meere bewahren</h2>
+            <h2 class="home-subtitle">FÜR UNSERE WELTMEERE</h2>
+            <h3 class="home-subtitle">Geisternetze melden und bergen</h3>
+            
+            
+            <h:outputText value="Willkommen #{person.firstName} #{person.name}!" />
+			<h:outputText value="Willkommen #{person.email} #{person.phonenumber}!" />
+			
+			   <h2 class="home-subtitle">Übersicht über alle gemeldeten Geisternetze</h2>
+			
+			<h:dataTable var="ghostnet" value="#{ghostnetlist.liste}">
+			
+			
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{ghostnet.id}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Latitude</f:facet>
+				<h:outputText value="#{ghostnet.latitude}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Longitude</f:facet>
+				<h:outputText value="#{ghostnet.longitude}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Gesichtet am</f:facet>
+				<h:outputText value="#{ghostnet.reportedAt}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Größe</f:facet>
+				<h:outputText value="#{ghostnet.size}"/>
+			</h:column>
+		
+			<h:column>
+				<f:facet name="header">Status</f:facet>
+				<h:outputText value="#{ghostnet.status}"/>
+			</h:column>
+		
+		
+			</h:dataTable>
 
+           
+           
+           
+        
+           
+           
            
         </div>
     </h:body>
