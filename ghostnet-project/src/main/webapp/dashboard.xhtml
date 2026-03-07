@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Ghostnet Shea Sepherd</title>
+        
+    </h:head>
+
+    <h:body>
+    
+    
+        <div class="main-container">
+
+            <!-- Title and Subtitle -->
+            <h1 class="home-title">Shea Sepherd</h1>
+			<h2 class="home-subtitle">Übersicht über alle gemeldeten Geisternetze</h2>
+		
+		
+			
+			<p:dataTable var="ghostnet" value="#{ghostnetlist.liste}">
+			
+				<p:column>
+					<f:facet name="header">Id</f:facet>
+					<p:outputLabel value="#{ghostnet.id}"/>
+				</p:column>
+			
+				<p:column>
+					<f:facet name="header">Latitude</f:facet>
+					<p:outputLabel value="#{ghostnet.latitude}"/>
+				</p:column>
+			
+				<p:column>
+					<f:facet name="header">Longitude</f:facet>
+					<p:outputLabel value="#{ghostnet.longitude}"/>
+				</p:column>
+			
+				<p:column>
+					<f:facet name="header">Gesichtet am</f:facet>
+					<p:datePicker value="#{ghostnet.reportedAt}" disabled="true"/>
+				</p:column>
+			
+				<p:column>
+					<f:facet name="header">Größe</f:facet>
+					<p:outputLabel value="#{ghostnet.size}"/>
+				</p:column>
+		
+				<p:column>
+					<f:facet name="header">Status</f:facet>
+					<p:outputLabel value="#{ghostnet.status}"/>
+				</p:column>
+		
+		
+			</p:dataTable>
+	
+			<h:form>
+            	<p:commandButton value="Geisternetz melden" action="#{controller.goToReport()}" />
+			</h:form>
+       
+           
+			<h:form>
+            	<p:commandButton value="Einloggen/Registrieren" action="#{controller.goToLoginRegister()}" />
+			</h:form>
+           
+           
+        </div>
+        
+        
+    </h:body>
+
+</html>

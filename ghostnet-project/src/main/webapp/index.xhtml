@@ -11,6 +11,8 @@
     </h:head>
 
     <h:body>
+    
+    
         <div class="main-container">
 
             <!-- Title and Subtitle -->
@@ -19,10 +21,12 @@
             <h3 class="home-subtitle">Geisternetze melden und bergen</h3>
             
             
-            <h:outputText value="Willkommen #{person.firstName} #{person.name}!" />
-			<h:outputText value="Willkommen #{person.email} #{person.phonenumber}!" />
+            <h:outputText value="Willkommen!" />
+			<h:outputText value="Willkommen" />
 			
 			   <h2 class="home-subtitle">Übersicht über alle gemeldeten Geisternetze</h2>
+		
+		
 			
 			<h:dataTable var="ghostnet" value="#{ghostnetlist.liste}">
 			
@@ -61,14 +65,19 @@
 			</h:dataTable>
 	
 	<h:form>
-            <h:commandButton value="Geisternetz melden" action="#{controller.goToReport()}" />
+            <p:commandButton value="Geisternetz melden" action="#{controller.goToReport()}" />
 	</h:form>
-           
+      
+      
+     
+         
            
 	<h:form>
-            <h:commandButton value="Einloggen/Registrieren" action="#{controller.goToLoginRegister()}" />
+            <p:commandButton value="Einloggen/Registrieren" action="#{controller.goToLoginRegister()}" />
 	</h:form>
            
+           
+           	
         
            
            
