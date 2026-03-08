@@ -57,11 +57,11 @@ public class Person implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Person) {
+		if (obj instanceof Person) {
 			Person b = (Person)obj;
-			if(b.getEmail().equals(this.email) && b.getPassword().equals(this.password)) {
+			if (b.getEmail().equals(this.email) && 
+				b.getPassword().equals(this.password)) 
 				return true;
-			}
 		}
 		return false;
 	}

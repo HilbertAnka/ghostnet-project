@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.component.UIComponent;
 import jakarta.faces.component.UIInput;
@@ -20,22 +21,6 @@ public class LoginController implements Serializable {
 
 	String email;
 	Person person;
-	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Person getPerson() {
-		return person;
-	}
-
-	public void setPerson(Person person) {
-		this.person = person;
-	}
 
 	List<Person> personlist;
 	
@@ -46,7 +31,7 @@ public class LoginController implements Serializable {
 		this.person = new Person();
 	}
 	
-	public void postValidateName(ComponentSystemEvent ev) throws AbortProcessingException {
+	public void postValidateEmail(ComponentSystemEvent ev) throws AbortProcessingException {
 		UIInput temp = (UIInput)ev.getComponent();
 		this.email = (String)temp.getValue();
 		int breakpoint = 1;	
@@ -69,6 +54,21 @@ public class LoginController implements Serializable {
 			return "index";
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 	
 	
 	

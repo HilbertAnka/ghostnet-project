@@ -24,16 +24,23 @@
 	            		<p:panelGrid columns="2" layout="flex" styleClass="p-fluid align-items-baseline">
 	                 
 				        <p:outputLabel for="email" value="E-Mail"/>
-				        <p:inputText id="email" value="#{loginController.person.email}" required="true"/>
+				        <p:inputText id="email" value="#{loginController.person.email}" required="true">
+				        <f:event type="jakarta.faces.event.PostValidateEvent"
+							listener="#{loginController.postValidateEmail}" />	
+				        </p:inputText>
+				        <p:message styleClass="error" for="email"><p:autoUpdate/>
+						</p:message>
+				        	
 				        
 				        <p:outputLabel for="pass" value="Passwort"/>
 				        <p:inputText id="pass" value="#{loginController.person.password}" required="true" validator="#{loginController.validateLogin}">
-				        	<f:event type="jakarta.faces.event.PostValidateEvent"
-							listener="#{loginController.postValidateName}" />
-							</p:inputText>
+				        	<f:event type="jakarta.faces.event.PostValidateEvent" listener="#{loginController.postValidateEmail}" />
+						</p:inputText>
+						<p:message styleClass="error" for="pass"><p:autoUpdate/>
+						</p:message>
 				        
 				        <f:facet name="footer">
-	        				<p:commandButton icon="pi pi-check" value="Login" action="#{loginController.login}" ajax="false"/>
+	        				<p:commandButton icon="pi pi-check" value="Login" action="#{loginController.login}"/>
 	       					<p:commandButton icon="pi pi-times" value="Cancel" styleClass="ui-button-secondary" style="margin-left: .5em"/>
 	   			  		</f:facet>
 	
