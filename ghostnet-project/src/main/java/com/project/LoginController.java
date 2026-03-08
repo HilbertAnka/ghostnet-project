@@ -47,11 +47,7 @@ public class LoginController implements Serializable {
 	}
 
 	public String login() {
-		int breakpoint = 1;
-		if (this.email.equals("anka@web.de"))
 			return "dashboard";
-		else
-			return "index";
 	}
 	
 	public String getEmail() {
