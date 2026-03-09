@@ -3,7 +3,7 @@ package com.project;
 import java.io.Serializable;
 import jakarta.inject.Named;
 
-@Named
+
 public class Person implements Serializable {
 	
 	//private String firstName;

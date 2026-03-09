@@ -17,7 +17,7 @@ public class IndexController implements Serializable {
 	    }
 	    
 	  public String goToIndex() {
-	        return "index";
+		  return "index";
 	    }
 	    
 	  public String goToDashboard() {
