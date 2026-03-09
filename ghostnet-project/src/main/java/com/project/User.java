@@ -2,9 +2,13 @@ package com.project;
 
 import java.io.Serializable;
 import jakarta.inject.Named;
+import jakarta.persistence.*;
 
-
-public class Person implements Serializable {
+@Entity
+public class User implements Serializable {
+	
+	//Assoziationen müssen noch irgendwo drübergeschrieben werden!!!
+	// muss ein public no argument konstruktor enthalten
 	
 	//private String firstName;
 	//private String name;
@@ -45,20 +49,20 @@ public class Person implements Serializable {
 		this.password = password;
 	}
 	
-	public Person(String email, String password) {
+	public User(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
 	
-	public Person() {
+	public User() {
 		super();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Person) {
-			Person b = (Person)obj;
+		if (obj instanceof User) {
+			User b = (User)obj;
 			if (b.getEmail().equals(this.email) && 
 				b.getPassword().equals(this.password)) 
 				return true;

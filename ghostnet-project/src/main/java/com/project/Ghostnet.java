@@ -2,12 +2,14 @@ package com.project;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
 import jakarta.inject.Named;
+import jakarta.persistence.*;
 
-
+@Entity
 public class Ghostnet implements Serializable {
 
+	//@Id wieso geht das nicht?
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private String id;
 	private String latitude;
 	private String longitude;

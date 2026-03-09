@@ -64,12 +64,13 @@
       <classifier>jakarta</classifier>
     </dependency>
 
-    <!-- MariaDB Java Client -->
-    <dependency>
-      <groupId>org.mariadb.jdbc</groupId>
-      <artifactId>mariadb-java-client</artifactId>
-      <version>3.1.4</version> 
-    </dependency>
+    <!-- my SQL -->
+   	<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.28</version>
+		</dependency>
+
 
     <!-- Hibernate Core -->
     <dependency>

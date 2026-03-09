@@ -27,7 +27,7 @@
 	            		<p:panelGrid columns="3" layout="flex" styleClass="p-fluid align-items-baseline">
 	                 
 					        <p:outputLabel for="email" value="E-Mail"/>
-					        <p:inputText id="email" value="#{loginController.person.email}" required="true">
+					        <p:inputText id="email" value="#{loginController.user.email}" required="true">
 					        <f:event type="jakarta.faces.event.PostValidateEvent"
 								listener="#{loginController.postValidateEmail}" />	
 					        </p:inputText>
@@ -36,7 +36,7 @@
 					        	
 					        
 					        <p:outputLabel for="pass" value="Passwort"/>
-					        <p:password id="pass" value="#{loginController.person.password}" 
+					        <p:password id="pass" value="#{loginController.user.password}" 
 					        	required="true" validator="#{loginController.validateLogin}"/>
 					        	
 							<p:message styleClass="error" for="pass"><p:autoUpdate/>
@@ -74,7 +74,7 @@
 					        <p:inputText id="text4" />
 					        	
 						  <f:facet name="footer">
-		        				<p:commandButton icon="pi pi-check" value="Registrieren" action="#{controller.registerPerson}"  ajax="true"/>
+		        				<p:commandButton icon="pi pi-check" value="Registrieren" action="#{controller.registerUser}"  ajax="true"/>
 		   			  	  </f:facet>
 	
 	               	</p:panelGrid>

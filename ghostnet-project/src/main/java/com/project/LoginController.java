@@ -20,15 +20,15 @@ import jakarta.inject.Named;
 public class LoginController implements Serializable {
 
 	String email;
-	Person person;
+	User user;
 
-	List<Person> personlist;
+	List<User> userList;
 	
 	public LoginController() {
-		this.personlist = new ArrayList<Person>();
-		this.personlist.add(new Person("anka@web.de", "1234"));
-		this.personlist.add(new Person("selma@web.de", "4567"));
-		this.person = new Person();
+		this.userList = new ArrayList<User>();
+		this.userList.add(new User("anka@web.de", "1234"));
+		this.userList.add(new User("selma@web.de", "4567"));
+		this.user = new User();
 	}
 	
 	public void postValidateEmail(ComponentSystemEvent ev) throws AbortProcessingException {
@@ -38,8 +38,8 @@ public class LoginController implements Serializable {
 	}
 	
 	public void validateLogin(FacesContext context, UIComponent component, Object value) throws ValidatorException {
-		for(Person b:personlist) {
-			Person temp=new Person(this.email, (String)value);
+		for(User b:userList) {
+			User temp=new User(this.email, (String)value);
 			if(b.equals(temp))
 				return;
 		}
@@ -58,12 +58,12 @@ public class LoginController implements Serializable {
 		this.email = email;
 	}
 
-	public Person getPerson() {
-		return person;
+	public User getUser() {
+		return user;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	
