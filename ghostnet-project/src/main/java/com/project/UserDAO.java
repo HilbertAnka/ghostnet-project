@@ -3,9 +3,10 @@ package com.project;
 
 import java.util.List;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.*;
 
-
+@ApplicationScoped
 public class UserDAO {
 	
 	private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ghostnet-ProjectPersistenceUnit");

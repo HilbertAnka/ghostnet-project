@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class User implements Serializable {
 	
 	//Assoziationen müssen noch irgendwo drübergeschrieben werden!!!
-	// muss ein public no argument konstruktor enthalten
+	// 
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -23,7 +23,7 @@ public class User implements Serializable {
 		
 	}
 
-	
+	//Getter und Setter
 	public Long getId() {
 		return id;
 	}

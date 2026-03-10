@@ -12,7 +12,7 @@ import jakarta.faces.event.AbortProcessingException;
 import jakarta.faces.event.ComponentSystemEvent;
 import jakarta.faces.validator.ValidatorException;
 import jakarta.faces.view.ViewScoped;
-
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 
@@ -20,21 +20,42 @@ import jakarta.inject.Named;
 @ViewScoped
 public class RegisterController implements Serializable {
 	
-	private List<User> users = new ArrayList<>();
+	@Inject
+	private UserDAO userDAO;
 	
-	  public void register(User user) {
-	        users.add(user);
-	    }
+	private User user = new User();
+	
+	
+	//Getter und Setter für user
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-	  
-	    public List<User> getUsers() {
-	        return users;
-	    }
-	
-	
-	    public String registerUser() {
-	    	return "welcome";
-	    }
 
+
+	
+	// leerer Konstruktor
+	public RegisterController() {
+		
+	}
+	
+	
+	public String addUser() {
+		userDAO.saveUser(user);
+		user = new User();
+		return "welcome";
+	}
+	
+	public void removeUser(User u) {
+		userDAO.removeUser(u);
+		
+	}
+	
+	
+	
+	
 
 }

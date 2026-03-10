@@ -26,49 +26,10 @@
 			
 			   <h2 class="home-subtitle">Übersicht über alle gemeldeten Geisternetze</h2>
 		
-		 <!-- 
-			
-			<h:dataTable var="ghostnet" value="#{ghostnet.liste}">
-			
-			
-			<h:column>
-				<f:facet name="header">Id</f:facet>
-				<h:outputText value="#{ghostnet.id}"/>
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Latitude</f:facet>
-				<h:outputText value="#{ghostnet.latitude}"/>
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Longitude</f:facet>
-				<h:outputText value="#{ghostnet.longitude}"/>
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Gesichtet am</f:facet>
-				<h:outputText value="#{ghostnet.reportedAt}"/>
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Größe</f:facet>
-				<h:outputText value="#{ghostnet.size}"/>
-			</h:column>
 		
-			<h:column>
-				<f:facet name="header">Status</f:facet>
-				<h:outputText value="#{ghostnet.status}"/>
-			</h:column>
-		
-		
-			</h:dataTable>
-	
-	-->
-	
 	
 	<h:form>
-            <p:commandButton value="Geisternetz melden" action="#{controller.goToReport()}" />
+            <p:commandButton value="Geisternetz melden" action="#{controller.goToReport}" />
 	</h:form>
       
       
@@ -76,7 +37,7 @@
          
            
 	<h:form>
-            <p:commandButton value="Einloggen/Registrieren" action="#{controller.goToLoginRegister()}" />
+            <p:commandButton value="Einloggen/Registrieren" action="#{controller.goToLoginRegister}" />
 	</h:form>
            
            
