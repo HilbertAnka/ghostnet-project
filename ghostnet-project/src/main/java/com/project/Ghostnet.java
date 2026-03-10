@@ -1,25 +1,82 @@
 package com.project;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDateTime;
-import jakarta.inject.Named;
 import jakarta.persistence.*;
 
 @Entity
 public class Ghostnet implements Serializable {
 
-	//@Id wieso geht das nicht?
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
-	private String latitude;
-	private String longitude;
-	private String reportedAt;
-	private String size;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private Double latitude;
+	private Double longitude;
+	private java.util.Date reportedAt;
+	private Integer size;
 	private String status;
 	
-	public Ghostnet(String id, String latitude, String longitude, String reportedAt, String size, String status) {
+	//leerer Konstruktor
+	public Ghostnet() {
+			
+	}
 		
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+
+	public Double getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+		
+	}
+
+
+	public Double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	
+	public java.util.Date getReportedAt() {
+		return reportedAt;
+	}
+	public void setReportedAt(java.util.Date reportedAt) {
+		this.reportedAt = reportedAt;
+	}
+
+
+	public Integer getSize() {
+		return size;
+	}
+	public void setSize(Integer size) {
+		this.size = size;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	
+	
+	
+	
+	public Ghostnet(Double latitude, Double longitude, java.util.Date reportedAt, Integer size, String status) {
+		
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.reportedAt = reportedAt;
@@ -29,51 +86,4 @@ public class Ghostnet implements Serializable {
 	}
 	
 
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public String getLatitude() {
-		return latitude;
-	}
-	
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-	
-	public String getLongitude() {
-		return longitude;
-	}
-	
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
-	
-	public String getReportedAt() {
-		return reportedAt;
-	}
-	
-	public void setReportedAt(String reportedAt) {
-		this.reportedAt = reportedAt;
-	}
-	
-	public String getSize() {
-		return size;
-	}
-	
-	public void setSize(String size) {
-		this.size = size;
-	}
-	
-	public String getStatus() {
-		return status;
-	}
-	
-	public void setStatus(String status) {
-		this.status = status;
-	}
 }

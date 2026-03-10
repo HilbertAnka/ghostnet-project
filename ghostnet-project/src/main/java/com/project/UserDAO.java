@@ -1,25 +1,49 @@
 package com.project;
 
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import java.util.List;
 
+import jakarta.persistence.*;
 
 
 public class UserDAO {
 	
-	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ghostnet-ProjectPersistenceUnit");
+	private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ghostnet-ProjectPersistenceUnit");
 	
-	  public void saveUser(User user) {  
-	  EntityManager em = emf.createEntityManager();
-	  EntityTransaction t = em.getTransaction();
-	  t.begin();
-	  em.persist(user);
-	  t.commit();
-	}
+	 
 	  
-	  
+		  public void saveUser(User user) {  
+			  
+			  EntityManager entityManager = emf.createEntityManager();
+			  EntityTransaction t = entityManager.getTransaction();
+			  t.begin();
+			  entityManager.persist(user);
+			  t.commit();
+			  
+			  entityManager.close();
+			  
+		  }
+		  
+		  public List<User> findAll() {
+			  
+			  EntityManager entityManager = emf.createEntityManager();
+			  Query abfrage = entityManager.createQuery("select u from User u");
+			  List<User> allUser = abfrage.getResultList();
+			  entityManager.close();
+			  return allUser;
+			  
+		  }
+		  
+		  
+		  public void removeUser(User user) {  
+			  
+			  EntityManager entityManager = emf.createEntityManager();
+			  EntityTransaction t = entityManager.getTransaction();
+			  t.begin();
+			  entityManager.remove(user);
+			  t.commit();
+			  
+			  entityManager.close();
+		  }  
 
 }

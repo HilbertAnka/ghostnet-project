@@ -18,10 +18,12 @@
             <!-- Title and Subtitle -->
             <h1 class="home-title">Shea Sepherd</h1>
 			<h2 class="home-subtitle">Übersicht über alle gemeldeten Geisternetze</h2>
-		
+	
+	
+		<h:form>
 		
 			
-			<p:dataTable var="ghostnet" value="#{ghostnetlist.liste}">
+			<p:dataTable var="ghostnet" value="#{ghostnetController.allSavedGhostnets}">
 			
 				<p:column>
 					<f:facet name="header">Id</f:facet>
@@ -40,7 +42,7 @@
 			
 				<p:column>
 					<f:facet name="header">Gesichtet am</f:facet>
-					<p:datePicker value="#{ghostnet.reportedAt}" disabled="true"/>
+					<p:outputLabel value="#{ghostnet.reportedAt}"/>
 				</p:column>
 			
 				<p:column>
@@ -55,6 +57,8 @@
 		
 		
 			</p:dataTable>
+			
+			</h:form>
 	
 			<h:form>
             	<p:commandButton value="Geisternetz melden" action="#{controller.goToReport()}" />

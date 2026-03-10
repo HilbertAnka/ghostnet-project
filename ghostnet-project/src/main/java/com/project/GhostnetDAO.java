@@ -2,38 +2,52 @@ package com.project;
 
 import java.util.List;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.*;
 
 
-
+@ApplicationScoped
 public class GhostnetDAO {
 	
 	
 	
-	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ghostnet-ProjectPersistenceUnit");
+	private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ghostnet-ProjectPersistenceUnit");
+	
+	
+	
 	
 	  public void saveGhostnet(Ghostnet ghostnet) {  
-	  EntityManager em = emf.createEntityManager();
-	  EntityTransaction t = em.getTransaction();
-	  t.begin();
-	  em.persist(ghostnet);
-	  t.commit();
-	}
+		  
+		  EntityManager entityManager = emf.createEntityManager();
+		  EntityTransaction t = entityManager.getTransaction();
+		  t.begin();
+		  entityManager.merge(ghostnet);
+		  t.commit();
+		  
+		  entityManager.close();
 	  
-//	  public List<Ghostnet> findAll() {
-//		  
-//		  EntityManager entityManager emf.createEntityManager();
-//		  Query abfrage = entityManager.createQuery("select a from Ghostnet a");
-//		  List<Ghostnet> allGhostnet = abfrage.getResultList();
-//		  entityManager.close();
-//		  return allGhosnet;
-//		
-//		  
-//	  }
-//	  
+	  }
+	  
+	  public List<Ghostnet> findAll() {
+		  
+		  EntityManager entityManager = emf.createEntityManager();
+		  Query abfrage = entityManager.createQuery("select g from Ghostnet g");
+		  List<Ghostnet> allGhostnet = abfrage.getResultList();
+		  entityManager.close();
+		  return allGhostnet;
+		  
+	  }
+	  
+	  
+	  public void removeGhostnet(Ghostnet ghostnet) {  
+		  
+		  EntityManager entityManager = emf.createEntityManager();
+		  EntityTransaction t = entityManager.getTransaction();
+		  t.begin();
+		  entityManager.remove(ghostnet);
+		  t.commit();
+		  
+		  entityManager.close();
+	  }
 
 }
