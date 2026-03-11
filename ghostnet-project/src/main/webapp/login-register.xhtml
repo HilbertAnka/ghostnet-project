@@ -27,23 +27,23 @@
 	            		<p:panelGrid columns="3" layout="flex" styleClass="p-fluid align-items-baseline">
 	                 
 					        <p:outputLabel for="email" value="E-Mail"/>
-					        <p:inputText id="email" value="#{loginController.user.email}" required="true">
+					        <p:inputText id="email" value="#{loginController.email}" required="true">
 					        <f:event type="jakarta.faces.event.PostValidateEvent"
-								listener="#{loginController.postValidateEmail}" />	
+								listener="#{loginController.setEmailFromField}" />	
 					        </p:inputText>
 					        <p:message styleClass="error" for="email"><p:autoUpdate/>
 							</p:message>
 					        	
 					        
 					        <p:outputLabel for="pass" value="Passwort"/>
-					        <p:password id="pass" value="#{loginController.user.password}" 
+					        <p:password id="pass" value="#{loginController.password}" 
 					        	required="true" validator="#{loginController.validateLogin}"/>
 					        	
 							<p:message styleClass="error" for="pass"><p:autoUpdate/>
 							</p:message>
 					        
 					        <f:facet name="footer">
-		        				<p:commandButton icon="pi pi-check" value="Login" action="#{loginController.login()}"  ajax="true"/>
+		        				<p:commandButton icon="pi pi-check" value="Login" action="#{loginController.login}"  ajax="true"/>
 		   			  		</f:facet>
 	
 	    			    </p:panelGrid>
@@ -92,11 +92,11 @@
             
                 
            <h:form>    
-           	<p:commandButton value="Startseite" action="#{controller.goToIndex()}" />
+           	<p:commandButton value="Startseite" action="#{controller.goToIndex}" />
            </h:form> 
            
            <h:form>
-            <p:commandButton value="Dashboard" action="#{controller.goToDashboard()}" />
+            <p:commandButton value="Dashboard" action="#{controller.goToDashboard}" />
 		   </h:form>
            
            

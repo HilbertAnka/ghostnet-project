@@ -6,8 +6,6 @@ import jakarta.persistence.*;
 @Entity
 public class User implements Serializable {
 	
-	//Assoziationen müssen noch irgendwo drübergeschrieben werden!!!
-	// 
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

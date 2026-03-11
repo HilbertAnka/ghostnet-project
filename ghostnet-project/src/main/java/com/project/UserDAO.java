@@ -36,6 +36,31 @@ public class UserDAO {
 		  }
 		  
 		  
+		  //für Login-Prozess wichtig
+		  public User findByUserEmail(String email) {
+			    
+			  
+			  EntityManager entityManager = emf.createEntityManager();
+			    
+			  try {
+			        TypedQuery<User> abfrage = entityManager.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
+			        abfrage.setParameter("email", email);
+			        return abfrage.getSingleResult();
+			  } 
+			    
+			    
+			  catch (NoResultException e) {
+			        return null; // falls email-Adresse nicht existiert und dementsprechend kein User gefunden wird
+			  } 
+			    
+			    
+			  finally {
+			        entityManager.close();
+			  }
+			  
+		  }
+		  
+		  
 		  public void removeUser(User user) {  
 			  
 			  EntityManager entityManager = emf.createEntityManager();
