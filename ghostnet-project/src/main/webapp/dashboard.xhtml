@@ -12,9 +12,16 @@
 
     <h:body>
     
+    <f:metadata>
+    <f:event type="preRenderView" listener="#{dashboardController.init}" />
+	</f:metadata>
+    
     
         <div class="main-container">
 
+
+     
+     
             <!-- Title and Subtitle -->
             <h1 class="home-title">Shea Sepherd</h1>
 			<h2 class="home-subtitle">Übersicht über alle gemeldeten Geisternetze</h2>
@@ -58,19 +65,21 @@
 		
 			</p:dataTable>
 			
+			
+			
+			
 			</h:form>
 	
 			<h:form>
-            	<p:commandButton value="Geisternetz melden" action="#{controller.goToReport()}" />
+            	<p:commandButton value="Geisternetz melden" action="#{controller.goToReport}" />
 			</h:form>
        
          <h:form>
-            <p:commandButton value="Ausloggen" />
+            <p:commandButton value="Ausloggen" action="#{loginController.logout}" rendered="#{loginController.loggedIn}"/>
 		   </h:form>
            
            
-		
-           
+		    
         </div>
         
         

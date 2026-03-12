@@ -12,12 +12,12 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.event.AbortProcessingException;
 import jakarta.faces.event.ComponentSystemEvent;
 import jakarta.faces.validator.ValidatorException;
-import jakarta.faces.view.ViewScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class LoginController implements Serializable {
 
 	@Inject
@@ -25,7 +25,8 @@ public class LoginController implements Serializable {
 	
 	private String email;
 	private String password;
-	private User user;
+	private User currentUser;
+	private boolean isLoggedIn;
 	
 	//Getter und Setter für email, password und user
 	public String getEmail() {
@@ -35,7 +36,6 @@ public class LoginController implements Serializable {
 		this.email = email;
 	}
 
-	
 	public String getPassword() {
 		return password;
 	}
@@ -43,13 +43,22 @@ public class LoginController implements Serializable {
 		this.password = password;
 	}
 
+	public User getCurrentUser() {
+		return currentUser;
+	}
+	public void setCurrentUser(User currentUser) {
+		this.currentUser = currentUser;
+	}
+
 	
-	public User getUser() {
-		return user;
+	public boolean getIsLoggedIn() {
+		return isLoggedIn;
+		
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setIsLoggedIn(boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
 	}
+
 
 	// leerer Konstruktor
 	public LoginController() {
@@ -64,7 +73,7 @@ public class LoginController implements Serializable {
 	    
 	}
 	
-	
+	//checkt ob Email und Login stimmen
 	public void validateLogin(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		
 		this.password = (String) value;
@@ -81,16 +90,27 @@ public class LoginController implements Serializable {
 		        throw new ValidatorException(new FacesMessage("Login fehlgeschlagen! E-Mail oder Passwort falsch."));
 		    }
 		   
-		   this.user = userFromDB;
+		   this.currentUser = userFromDB;
 
 		}
 
-	public String login() {
-			return "dashboard";
-	}
+	
+	   public String login() {
+	        if (currentUser != null) {
+	            return "dashboard?faces-redirect=true"; // Weiterleitung zur Dashboard-Seite
+	        }
+	        return null; // Login funktioniert nicht
+	    }
+	
+	   public String logout() {
+	        // Session wird gelöscht
+	        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	        this.currentUser = null; // Benutzer wird aus der Session entfernt
+	        return "index?faces-redirect=true";
+	    }
 
-	
-	
-	
-	
-}
+	    // Hilfsmethode: Prüft, ob User eingeloggt ist
+	    public boolean isLoggedIn() {
+	        return currentUser != null;
+	    }
+	}

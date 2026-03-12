@@ -49,9 +49,20 @@
             
                 
           <h:form>    
-          	<p:commandButton value="Startseite" action="#{controller.goToIndex()}" />
+          	<p:commandButton value="Startseite" action="#{controller.goToIndex}" rendered="#{not loginController.loggedIn}" />
           </h:form> 
         
+         <h:form>
+            <p:commandButton value="Dashboard" action="#{controller.goToDashboard}" rendered="#{loginController.loggedIn}" />
+		   </h:form>
+           
+        
+           <h:form>
+            <p:commandButton value="Ausloggen" action="#{loginController.logout}" rendered="#{loginController.loggedIn}" />
+		   </h:form>
+		   
+		    
+           
         </div>
     
     </h:body>
