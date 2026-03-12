@@ -13,8 +13,14 @@ public class Ghostnet implements Serializable {
 	private Double longitude;
 	private java.util.Date reportedAt;
 	private Integer size;
-	private String status;
+	 @Enumerated(EnumType.STRING)
+	private GhostnetStatus status;
 	
+	 @ManyToOne(fetch = FetchType.EAGER)
+	 @JoinColumn(name = "assigned_to_id")
+	private User assignedTo;
+	
+
 	//leerer Konstruktor
 	public Ghostnet() {
 			
@@ -34,7 +40,6 @@ public class Ghostnet implements Serializable {
 	}
 	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
-		
 	}
 
 
@@ -62,24 +67,34 @@ public class Ghostnet implements Serializable {
 	}
 
 
-	public String getStatus() {
+	public GhostnetStatus getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+
+	public void setStatus(GhostnetStatus status) {
 		this.status = status;
 	}
+	
+	
+	public User getAssignedTo() {
+		return assignedTo;
+	}
 
+	 public void setAssignedTo(User assignedTo) {
+		 this.assignedTo = assignedTo;
+	}
 	
 	
 	
 	
-	public Ghostnet(Double latitude, Double longitude, java.util.Date reportedAt, Integer size, String status) {
+	public Ghostnet(Double latitude, Double longitude, java.util.Date reportedAt, Integer size, GhostnetStatus status, User assignedTo) {
 		
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.reportedAt = reportedAt;
 		this.size = size;
 		this.status = status;
+		this.assignedTo = assignedTo;
 		
 	}
 	

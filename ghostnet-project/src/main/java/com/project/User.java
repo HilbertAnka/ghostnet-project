@@ -2,6 +2,8 @@ package com.project;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class User implements Serializable {
@@ -15,6 +17,10 @@ public class User implements Serializable {
 	private String phonenumber;
 	private String email;
 	private String password;
+	
+	@OneToMany(mappedBy="assignedTo", fetch = FetchType.EAGER)
+	private List<Ghostnet> linkedGhostnets = new ArrayList<>();
+	
 	
 	//leerer Konstruktor
 	public User() {
@@ -67,6 +73,19 @@ public class User implements Serializable {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public List<Ghostnet> getLinkedGhostnets() {
+	    return linkedGhostnets;
+	}
+
+	public void setLinkedGhostnets(List<Ghostnet> linkedGhostnets) {
+	    this.linkedGhostnets = linkedGhostnets;
+	}
+	
+	public void addGhostnet(Ghostnet ghostnet) {
+	    linkedGhostnets.add(ghostnet);
+	    ghostnet.setAssignedTo(this);
 	}
 	
 	

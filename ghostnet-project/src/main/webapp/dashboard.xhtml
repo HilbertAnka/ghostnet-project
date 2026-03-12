@@ -59,7 +59,39 @@
 		
 				<p:column>
 					<f:facet name="header">Status</f:facet>
+					
+					
+					
 					<p:outputLabel value="#{ghostnet.status}"/>
+					
+				
+					<p:commandButton 
+						value="Bergen"  
+						rendered="#{ghostnet.assignedTo == null}"
+	                    action="#{ghostnetController.assignToUser(ghostnet)}"
+	                    update="@form" styleClass="rounded-button" />
+					
+					
+					<p:commandButton value="Geborgen" 
+						rendered="#{ghostnet.assignedTo == loginController.currentUser and ghostnet.status == 'BERGUNG_BEVORSTEHEND'}"
+	                    action="#{ghostnetController.markAsRecovered(ghostnet)}"
+	                    update="@form"
+						styleClass="rounded-button ui-button-success" />
+						
+					
+					<p:commandButton  value="Verschollen" 
+						rendered="#{ghostnet.assignedTo == loginController.currentUser and ghostnet.status == 'BERGUNG_BEVORSTEHEND'}"
+	                    action="#{ghostnetController.markAsLost(ghostnet)}"
+	                    update="@form"
+						styleClass="rounded-button ui-button-danger" />
+						
+						
+					<p:commandButton value="Show" 
+					 	rendered="#{ghostnet.assignedTo != null and ghostnet.assignedTo != loginController.currentUser}" 
+						type="button" 
+						icon="pi pi-user" 
+						onclick="PF('dlg1').show()"/>
+
 				</p:column>
 		
 		
@@ -81,6 +113,18 @@
            
 		    
         </div>
+        
+        
+        <p:dialog header="Header" widgetVar="dlg1" minHeight="40" width="350" showEffect="fade" closeOnEscape="true">
+    <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</p:dialog>
+        
+        
+  
+        
         
         
     </h:body>

@@ -22,6 +22,9 @@ public class RegisterController implements Serializable {
 	
 	@Inject
 	private UserDAO userDAO;
+	@Inject
+	private LoginController loginController;
+	
 	
 	private User user = new User();
 	
@@ -45,8 +48,10 @@ public class RegisterController implements Serializable {
 	
 	public String addUser() {
 		userDAO.saveUser(user);
+		loginController.setCurrentUser(user);
 		user = new User();
-		return "welcome";
+		return "welcome?faces-redirect=true";
+		
 	}
 	
 	public void removeUser(User u) {

@@ -101,6 +101,9 @@ public class LoginController implements Serializable {
 	        }
 	        return null; // Login funktioniert nicht
 	    }
+	   
+	   
+	   
 	
 	   public String logout() {
 	        // Session wird gelöscht
