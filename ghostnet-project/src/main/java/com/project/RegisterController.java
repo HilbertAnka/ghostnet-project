@@ -36,29 +36,49 @@ public class RegisterController implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-
-
 	
 	// leerer Konstruktor
 	public RegisterController() {
 		
 	}
 	
-	
+	//Registrierung eines neuen Users inkl. Prüfverfahren
 	public String addUser() {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+				// Prüfen, ob E-Mail-Adresse schon existiert
+			  	if(userDAO.findByUserEmail(user.getEmail()) != null) {
+			        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			            "Diese E-Mail-Adresse ist bereits registriert.", null));
+			        return null; 
+			    }
+	
+			    // Prüfen, ob E-Mail-Format gültig ist
+			    if(user.getEmail() == null || !user.getEmail().matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+")) {
+			        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			            "Bitte geben Sie eine gültige E-Mail-Adresse ein.", null));
+			        return null;
+			    }
+	
+			    // Telefonnummer darf nur Zahlen enthalten
+			    if(user.getPhonenumber() == null || !user.getPhonenumber().matches("\\d+")) {
+			        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			            "Die Telefonnummer darf nur Zahlen enthalten.", null));
+			        return null;
+			    }
+		
 		userDAO.saveUser(user);
 		loginController.setCurrentUser(user);
 		user = new User();
 		return "welcome?faces-redirect=true";
-		
 	}
 	
+	/* Kann später noch hinzugefügt und erweitert werden
 	public void removeUser(User u) {
 		userDAO.removeUser(u);
-		
 	}
-	
+	*/
 	
 	
 	

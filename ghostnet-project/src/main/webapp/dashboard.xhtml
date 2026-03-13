@@ -59,9 +59,6 @@
 		
 				<p:column>
 					<f:facet name="header">Status</f:facet>
-					
-					
-					
 					<p:outputLabel value="#{ghostnet.status}"/>
 					
 				
@@ -85,13 +82,32 @@
 	                    update="@form"
 						styleClass="rounded-button ui-button-danger" />
 						
-						
-					<p:commandButton value="Show" 
-					 	rendered="#{ghostnet.assignedTo != null and ghostnet.assignedTo != loginController.currentUser}" 
-						type="button" 
-						icon="pi pi-user" 
-						onclick="PF('dlg1').show()"/>
+					
+					 <p:commandButton 
+					  	value="Show"
+					  	rendered="#{ghostnet.assignedTo != null and ghostnet.assignedTo != loginController.currentUser}"
+					 	icon="pi pi-user"
+    					update="@form"
+					 	id="basic" 
+					 	type="button"/>
+					 	
+        				<p:overlayPanel for="basic" style="width:350px">
+        				
+        					<h:panelGrid columns="2" cellpadding="6">
+        				
+           			 	  	<h:outputText value="Name:" />
+        					<h:outputText value="#{ghostnet.assignedTo.firstName} #{ghostnet.assignedTo.name}" />
 
+					        <h:outputText value="E-Mail:" />
+					        <h:outputText value="#{ghostnet.assignedTo.email}" />
+					
+					        <h:outputText value="Telefon:" />
+					        <h:outputText value="#{ghostnet.assignedTo.phonenumber}" />
+					        
+					        </h:panelGrid>
+
+        				</p:overlayPanel>		
+					
 				</p:column>
 		
 		

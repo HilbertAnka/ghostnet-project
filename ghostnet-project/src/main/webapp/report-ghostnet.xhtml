@@ -16,32 +16,34 @@
  	    
  	        <!-- Fehlermeldungen anzeigen !!!"!Das hier nochmal checken!! -->
         <h:form id="form-meldung">
-            <p:messages id="messages" showDetail="true" autoUpdate="true" />
-
-      
+            
+            
+          	<p:growl id="growl" showDetail="false" life="3000" sticky="false" />
+            
 	           <p:card style="width:30em; margin:auto;" >
     	       <f:facet name="title">Geisternetz melden</f:facet>
            
            		 <p:panelGrid columns="2" layout="flex" styleClass="p-fluid align-items-baseline">
                  
-			        <p:outputLabel for="text1" value="Breitengrad"/>
-			        <p:inputText id="text1" value="#{ghostnetController.ghostnet.latitude}" required="true"/>
+			        <p:outputLabel for="latitude" value="Breitengrad"/>
+			        <p:inputText id="latitude" value="#{ghostnetController.ghostnet.latitude}" required="true"/>
 			
-			        <p:outputLabel for="text2" value="Längengrad"/>
-			        <p:inputText id="text2" value="#{ghostnetController.ghostnet.longitude}" required="true"/>
+			        <p:outputLabel for="longitude" value="Längengrad"/>
+			        <p:inputText id="longitude" value="#{ghostnetController.ghostnet.longitude}" required="true"/>
 			
 			        <p:outputLabel for="date" value="Gesichtet am"/>
-			        <p:datePicker id="date" value="#{ghostnetController.ghostnet.reportedAt}" required="true" showIcon="true" style="width:auto"/>
+			        <p:datePicker id="date" value="#{ghostnetController.ghostnet.reportedAt}" showIcon="true" style="width:auto" required="true"/>
+			        
 			
-			        <p:outputLabel for="text3" value="Größe in m² (ca.)"/>
-			        <p:inputText id="text3" value="#{ghostnetController.ghostnet.size}" required="true"/>
+			        <p:outputLabel for="size" value="Größe in m² (ca.)"/>
+			        <p:inputText id="size" value="#{ghostnetController.ghostnet.size}" required="true"/>
 
    			     </p:panelGrid>
             
             
            	  <f:facet name="footer">
-        		<p:commandButton icon="pi pi-check" value="Sichern" action="#{ghostnetController.addGhostnet}" update="@form, messages"/>
-       			<p:commandButton icon="pi pi-times" value="Cancel" styleClass="ui-button-secondary" style="margin-left: .5em"/>
+        		<p:commandButton icon="pi pi-check" value="Sichern" action="#{ghostnetController.addGhostnet}" update="growl @form"/>
+       			
    			  </f:facet>
             
     		  </p:card>  

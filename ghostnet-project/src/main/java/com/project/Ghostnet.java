@@ -2,6 +2,8 @@ package com.project;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
+import java.time.LocalDate;
+import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 public class Ghostnet implements Serializable {
@@ -11,7 +13,8 @@ public class Ghostnet implements Serializable {
 	private Long id;
 	private Double latitude;
 	private Double longitude;
-	private java.util.Date reportedAt;
+	@PastOrPresent(message = "Das Sichtungsdatum darf nicht in der Zukunft liegen.")
+	private LocalDate reportedAt;
 	private Integer size;
 	 @Enumerated(EnumType.STRING)
 	private GhostnetStatus status;
@@ -51,10 +54,10 @@ public class Ghostnet implements Serializable {
 	}
 
 	
-	public java.util.Date getReportedAt() {
+	public LocalDate getReportedAt() {
 		return reportedAt;
 	}
-	public void setReportedAt(java.util.Date reportedAt) {
+	public void setReportedAt(LocalDate reportedAt) {
 		this.reportedAt = reportedAt;
 	}
 
@@ -87,7 +90,7 @@ public class Ghostnet implements Serializable {
 	
 	
 	
-	public Ghostnet(Double latitude, Double longitude, java.util.Date reportedAt, Integer size, GhostnetStatus status, User assignedTo) {
+	public Ghostnet(Double latitude, Double longitude, LocalDate reportedAt, Integer size, GhostnetStatus status, User assignedTo) {
 		
 		this.latitude = latitude;
 		this.longitude = longitude;

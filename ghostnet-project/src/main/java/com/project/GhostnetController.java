@@ -33,6 +33,8 @@ public class GhostnetController implements Serializable {
 	
 	private List<Ghostnet> allSavedGhostnets;
 	
+	
+	
 	 @PostConstruct //init wird beim Laden der Seite ausgeführt - alle Ghostnets aus der Datenbank geladen
 	public void init() {
 	    allSavedGhostnets = ghostnetDAO.findAll();
@@ -53,17 +55,22 @@ public class GhostnetController implements Serializable {
 	public void setAllSavedGhostnets(List<Ghostnet> allSavedGhostnets) {
 		this.allSavedGhostnets = allSavedGhostnets;
 	}
-
+	
+	
 
 	//leerer Konstruktor
 	public GhostnetController() {
 		
 	}
 	
-	
+	//ein neues Geisternetz hinzufügen
 	public void addGhostnet() {
 		ghostnet.setStatus(GhostnetStatus.GEMELDET);
 		ghostnetDAO.saveGhostnet(ghostnet); //Methode von GhostnetDAO zum Speichern eines neuen Ghostnets wird aufgerufen 
+		
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Danke, das Geisternetz wurde gespeichert!", null);
+	    FacesContext.getCurrentInstance().addMessage(null, msg);
+		
 		allSavedGhostnets = ghostnetDAO.findAll(); //Liste wird aktualisiert
 		ghostnet = new Ghostnet(); // Formular wird wieder auf 0 zuürckgesetzt
 	}
@@ -157,7 +164,7 @@ public class GhostnetController implements Serializable {
 	
 	
 	
-	
+
 	
 	
 	
