@@ -7,35 +7,38 @@
 
     <h:head>
         <title>Ghostnet Shea Sepherd</title>
-        
+        <link rel="stylesheet" type="text/css" media="screen" href="#{request.contextPath}/styles.css" />
     </h:head>
 
     <h:body>
     
     
         <div class="main-container">
+        
+        	<!-- Logo -->
+			<img class="logo" src="#{request.contextPath}/media/sheaSepherdLogo.svg" alt="Shea Sepherd Logo" />
 
             <!-- Title and Subtitle -->
-            <h1 class="home-title">Shea Sepherd</h1>
-            <h2 class="home-subtitle">FÜR UNSERE WELTMEERE</h2>
+            <h3 class="home-title">Shea Sepherd</h3>
+            <h1 class="home-subtitle">FÜR UNSERE WELTMEERE</h1>
             <h2 class="home-subtitle">Geisternetze melden und bergen</h2>
             
+            <!-- Hero Image -->
+            <img class="hero" src="#{request.contextPath}/media/seaTurtle.jpg" alt="Hero Image" />
             
+            
+   <div class="button-container">      
         
-	<h:form>
-            <p:commandButton value="Geisternetz melden" action="#{controller.goToReport}" />
-	</h:form>
-      
-      
-     
-         
+		<h:form>
+	            <p:commandButton value="Geisternetz melden" action="#{controller.goToReport}" styleClass="button-main" />
+		</h:form>
+	        
+		<h:form>
+	            <p:commandButton value="Einloggen/Registrieren" action="#{controller.goToLoginRegister}" styleClass="button-main"/>
+		</h:form>
+	           
            
-	<h:form>
-            <p:commandButton value="Einloggen/Registrieren" action="#{controller.goToLoginRegister}" />
-	</h:form>
-           
-           
-   
+   </div>
            
            
            

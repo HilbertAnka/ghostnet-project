@@ -5,22 +5,31 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
+     <h:head>
         <title>Ghostnet Shea Sepherd</title>
-        
+        <link rel="stylesheet" type="text/css" media="screen" href="#{request.contextPath}/styles.css" />
     </h:head>
+
 
     <h:body>
     
  	    <div class="main-container">
  	    
- 	        <!-- Fehlermeldungen anzeigen !!!"!Das hier nochmal checken!! -->
+ 	    <!-- Logo -->
+			<img class="logo" src="#{request.contextPath}/media/sheaSepherdLogo.svg" alt="Shea Sepherd Logo" />
+ 	    
+ 	    
+ 	    
+ 	    
+ 	       
+ 	       
+ 	       
         <h:form id="form-meldung">
             
             
           	<p:growl id="growl" showDetail="false" life="3000" sticky="false" />
             
-	           <p:card style="width:30em; margin:auto;" >
+	           <p:card style="width:30em; margin: 3rem auto 2rem auto;" >
     	       <f:facet name="title">Geisternetz melden</f:facet>
            
            		 <p:panelGrid columns="2" layout="flex" styleClass="p-fluid align-items-baseline">
@@ -49,21 +58,23 @@
     		  </p:card>  
           </h:form>
             
+            
+           <div class="button-container">   
                 
-          <h:form>    
-          	<p:commandButton value="Startseite" action="#{controller.goToIndex}" rendered="#{not loginController.loggedIn}" />
-          </h:form> 
-        
-         <h:form>
-            <p:commandButton value="Dashboard" action="#{controller.goToDashboard}" rendered="#{loginController.loggedIn}" />
-		   </h:form>
-           
-        
-           <h:form>
-            <p:commandButton value="Ausloggen" action="#{loginController.logout}" rendered="#{loginController.loggedIn}" />
-		   </h:form>
+	          	<h:form>    
+	          		<p:commandButton value="Startseite" action="#{controller.goToIndex}" rendered="#{not loginController.loggedIn}" styleClass="button-main" />
+	          	</h:form> 
+	        
+	         	<h:form>
+	            	<p:commandButton value="Dashboard" action="#{controller.goToDashboard}" rendered="#{loginController.loggedIn}" styleClass="button-main" />
+			  	</h:form>
+	           
+	        
+	           	<h:form>
+	            	<p:commandButton value="Ausloggen" action="#{loginController.logout}" rendered="#{loginController.loggedIn}" styleClass="button-main" />
+			   	</h:form>
 		   
-		    
+		    </div>
            
         </div>
     

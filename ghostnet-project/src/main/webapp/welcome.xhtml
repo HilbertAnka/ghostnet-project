@@ -7,22 +7,34 @@
 
     <h:head>
         <title>Ghostnet Shea Sepherd</title>
-        
+        <link rel="stylesheet" type="text/css" media="screen" href="#{request.contextPath}/styles.css" />
     </h:head>
+
 
     <h:body>
     
- 	    <div class="main-container">
-
-       <h1 class="home-title">Willkommen!!</h1>
-       
-       
-       
-         <h:form>
-            <p:commandButton value="Dashboard" action="#{controller.goToDashboard()}" />
-		   </h:form>
-           
-        
+ 	    <div class="welcome-container">
+ 	    
+	 	    <!-- Logo -->
+			<img class="logo" src="#{request.contextPath}/media/sheaSepherdLogo.svg" alt="Shea Sepherd Logo" />
+	 	    
+	       <h2 class="home-title">Willkommen!</h2>
+	       
+	       	<p class="welcome-text">Schön, dass du hier bist! Wir freuen uns über deine Unterstützung.
+	       	Schau dir an, welche Geisternetze bereits gemeldet wurden – vielleicht kannst du selbst eins bergen.
+	      	Oder melde ein neues Geisternetz, damit andere es finden und bergen können.</p>
+	     	<p class="welcome-text">Gemeinsam halten wir die Meere sauber und schützen die Tiere – jede Meldung zählt!</p>
+	       
+	        <!-- Turtle Image -->
+	        <img class="turtle" src="#{request.contextPath}/media/turtlePlastic.jpg" alt="Turtle Image" />
+	       
+	       
+	       	<div class="button-container">   
+	         	<h:form>
+	            	<p:commandButton value="Dashboard" action="#{controller.goToDashboard()}" styleClass="button-main" />
+			   	</h:form>
+	        </div>
+	        
         </div>
     
     </h:body>

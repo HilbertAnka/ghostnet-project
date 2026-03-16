@@ -5,10 +5,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
+     <h:head>
         <title>Ghostnet Shea Sepherd</title>
-        
+        <link rel="stylesheet" type="text/css" media="screen" href="#{request.contextPath}/styles.css" />
     </h:head>
+
 
     <h:body>
     
@@ -19,22 +20,27 @@
     
         <div class="main-container">
 
-
+ 			<!-- Logo -->
+			<img class="logo" src="#{request.contextPath}/media/sheaSepherdLogo.svg" alt="Shea Sepherd Logo" />
+ 	    
+ 	    
+ 	    
      
      
             <!-- Title and Subtitle -->
-            <h1 class="home-title">Shea Sepherd</h1>
-			<h2 class="home-subtitle">Übersicht über alle gemeldeten Geisternetze</h2>
+            <h2 class="home-title">Shea Sepherd</h2>
+			<h3 class="home-subtitle">Übersicht über alle gemeldeten Geisternetze</h3>
 	
 	
 		<h:form>
 		
 			
-			<p:dataTable var="ghostnet" value="#{ghostnetController.allSavedGhostnets}">
+			<p:dataTable var="ghostnet" value="#{ghostnetController.allSavedGhostnets}"  stripedRows="true" styleClass="ghostnet-table">
 			
 				<p:column>
-					<f:facet name="header">Id</f:facet>
-					<p:outputLabel value="#{ghostnet.id}"/>
+    				<f:facet name="header">Gesichtet am</f:facet>
+    				<p:outputLabel value="#{ghostnet.reportedAt}" pattern="dd.MM.yyyy">
+    				</p:outputLabel>
 				</p:column>
 			
 				<p:column>
@@ -48,39 +54,41 @@
 				</p:column>
 			
 				<p:column>
-					<f:facet name="header">Gesichtet am</f:facet>
-					<p:outputLabel value="#{ghostnet.reportedAt}"/>
-				</p:column>
-			
-				<p:column>
 					<f:facet name="header">Größe</f:facet>
 					<p:outputLabel value="#{ghostnet.size}"/>
 				</p:column>
 		
 				<p:column>
 					<f:facet name="header">Status</f:facet>
-					<p:outputLabel value="#{ghostnet.status}"/>
 					
-				
+					<div class="status-text">
+					<p:outputLabel value="#{ghostnet.status.displayName}"
+					styleClass="#{ghostnet.status.name().toLowerCase()}-status" />
+					</div>
+					
+					<div class="button-group">
+					
 					<p:commandButton 
 						value="Bergen"  
 						rendered="#{ghostnet.assignedTo == null}"
 	                    action="#{ghostnetController.assignToUser(ghostnet)}"
-	                    update="@form" styleClass="rounded-button" />
+	                    update="@form" 
+	                    styleClass="rounded-button bergen-button"/>
 					
 					
-					<p:commandButton value="Geborgen" 
+					<p:commandButton 
+						value="Geborgen" 
 						rendered="#{ghostnet.assignedTo == loginController.currentUser and ghostnet.status == 'BERGUNG_BEVORSTEHEND'}"
 	                    action="#{ghostnetController.markAsRecovered(ghostnet)}"
 	                    update="@form"
-						styleClass="rounded-button ui-button-success" />
+						styleClass="rounded-button geborgen-button" />
 						
 					
 					<p:commandButton  value="Verschollen" 
 						rendered="#{ghostnet.assignedTo == loginController.currentUser and ghostnet.status == 'BERGUNG_BEVORSTEHEND'}"
 	                    action="#{ghostnetController.markAsLost(ghostnet)}"
 	                    update="@form"
-						styleClass="rounded-button ui-button-danger" />
+						styleClass="rounded-button verschollen-button" />
 						
 					
 					 <p:commandButton 
@@ -89,7 +97,8 @@
 					 	icon="pi pi-user"
     					update="@form"
 					 	id="basic" 
-					 	type="button"/>
+					 	type="button"
+					 	styleClass="kontakt-button"/>
 					 	
         				<p:overlayPanel for="basic" style="width:350px">
         				
@@ -106,7 +115,8 @@
 					        
 					        </h:panelGrid>
 
-        				</p:overlayPanel>		
+        				</p:overlayPanel>	
+        			</div>			
 					
 				</p:column>
 		
@@ -117,27 +127,23 @@
 			
 			
 			</h:form>
+			
+			  	<div class="button-container"> 
 	
-			<h:form>
-            	<p:commandButton value="Geisternetz melden" action="#{controller.goToReport}" />
-			</h:form>
-       
-         <h:form>
-            <p:commandButton value="Ausloggen" action="#{loginController.logout}" rendered="#{loginController.loggedIn}"/>
-		   </h:form>
-           
-           
+					<h:form>
+		            	<p:commandButton value="Geisternetz melden" action="#{controller.goToReport}" styleClass="button-main"/>
+					</h:form>
+	       
+		         	<h:form>
+		            	<p:commandButton value="Ausloggen" action="#{loginController.logout}" rendered="#{loginController.loggedIn}" styleClass="button-main"/>
+				   	</h:form>
+				   
+            	</div>
 		    
         </div>
         
         
-        <p:dialog header="Header" widgetVar="dlg1" minHeight="40" width="350" showEffect="fade" closeOnEscape="true">
-    <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</p:dialog>
-        
+       
         
   
         

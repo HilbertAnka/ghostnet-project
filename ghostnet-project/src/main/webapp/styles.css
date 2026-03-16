@@ -1,0 +1,230 @@
+html, body {
+    background-color: #041e37;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 3rem;
+    flex-direction: column;
+    align-items: center;
+    
+}
+    
+h1 {
+   text-align: center;
+   font-family: Arial;
+   color: #fff;
+   font-size: clamp(2rem, 5vw, 4.6rem);
+   margin: 2.5rem auto 0 auto;
+}
+
+h2 {
+   text-align: center;
+   font-family: Arial;
+   color: #fff;
+   font-size: clamp(1.5rem, 3vw, 2.6rem);
+   margin: 1rem auto 2rem auto;	
+}
+
+h3 {
+   text-align: center;
+   font-family: Arial;
+   color: #fff;
+   font-size: clamp(1rem, 2vw, 1.5rem);	
+   margin: 1rem auto 2rem auto;	
+}
+
+.welcome-container{
+	max-width: clamp(20rem, 80%, 40rem);
+    margin: 2rem auto;
+    text-align: justify;
+    line-height: 1.6;
+    font-family: Arial;
+}
+.welcome-text {
+   font-family: Arial;
+   color: #fff;
+   font-size: clamp(1rem, 1.3vw, 1.2rem);
+   text-align: justify;	
+}
+
+
+
+
+.logo {
+	height: clamp(4rem, 8vw, 8rem);
+    width: auto;
+	display: block;
+	margin: 3rem auto 0 auto;
+}
+
+.hero {
+    display: block;
+    width: 100%;        
+    max-height: 80vh;   
+    object-fit: cover;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.turtle{
+	display: block;
+	width: 75%;
+    max-width: 80%;  
+    height: auto;      
+    max-height: 80vh;   
+    object-fit: cover;
+    margin: 1.5rem auto 2rem auto; 
+    border-radius: 0.5rem;
+	
+}
+
+.button-container {
+    display: flex;   
+    justify-content: center;            
+    margin-top: 2rem;      
+    flex-wrap: wrap;
+}
+
+.ui-button.button-main,
+.ui-button.button-main.ui-state-hover,
+.ui-button.button-main:focus {
+    background-color: #db4e00;
+    color: #fff;                 
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin:auto 2.5rem auto 2.5rem;
+    padding: 0.3rem 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-main:hover,
+.ui-button.button-main:hover {
+    background-color: #b83f00;
+}
+
+
+/* Formular für Geisternetzmeldung*/
+/* DatePicker orange*/
+#form-meldung .ui-datepicker-trigger {
+    background-color: #db4e00 !important;
+    color: #fff !important;
+    cursor: pointer;
+}
+
+/* Hover für Datepicker */
+#form-meldung .ui-datepicker-trigger:hover {
+    background-color: #b83f00 !important;
+}
+
+/* Button im Geisternetz und Login/Register Formular*/
+#form-meldung .ui-button, #card-login-register .ui-button  {
+    background-color: #db4e00 !important;
+    color: #fff !important;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    border: none;
+    border-radius: 0.5rem;
+     padding: 0 0;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/*Text und Unterstrich in Tab-View Login/Register Formular*/
+
+.card-login li.ui-tabs-selected a {
+    color: #db4e00 !important;
+}
+.card-login li.ui-tabs-selected {
+    border-bottom: 3px solid #db4e00 !important;
+}
+
+
+/* DataTable */
+.ghostnet-table {
+    width: 90%;
+    max-width: 75rem;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.ghostnet-table th, 
+.ghostnet-table td {
+    padding: 0.75rem 1rem; 
+    text-align: left;
+    font-family: Arial;
+    font-size: clamp(0.9rem, 1vw, 1rem);
+}
+
+.status-text {
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.9rem, 1vw, 1rem);
+}
+.button-group .ui-button {
+    margin-right: 0.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.bergen-button {
+    background-color: #4fa9b3 !important;
+    color: #fff;
+    border: none !important;
+}
+.bergen-button:hover {
+    background-color: #326f77 !important;
+    border: none !important;
+}
+
+.ui-button.geborgen-button {
+    background-color: #51b813 !important;
+    color: #fff;
+    border: none !important;
+}
+.ui-button.geborgen-button:hover {
+    background-color: #64ab12;
+     border: none !important;
+}
+
+.verschollen-button {
+    background-color: #c82914 !important;
+    color: #fff;
+    border: none !important;
+}
+.verschollen-button:hover {
+    background-color: #b64f2d;
+    border: none !important;
+}
+
+.kontakt-button {
+  background-color: #eba43b !important;
+    color: #fff;
+    border: none !important;
+}
+.kontakt-button:hover {
+	background-color: #c77f14;
+    border: none !important;
+	
+}
+/* unterschiedliche Farben für den jeweiligen Status */
+.gemeldet-status {
+    color: #dbb124;
+    font-weight: bold;
+}
+
+.bergung_bevorstehend-status {
+    color: #366c82;
+    font-weight: bold;
+}
+
+.geborgen-status {
+    color: #55ad6b;
+    font-weight: bold;
+}
+
+.verschollen-status {
+    color: #c95632;
+    font-weight: bold;
+}
