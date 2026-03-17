@@ -7,6 +7,7 @@
 
      <h:head>
         <title>Ghostnet Shea Sepherd</title>
+        <link rel="icon" type="image/png" href="#{request.contextPath}/media/favicon.png" />
         <link rel="stylesheet" type="text/css" media="screen" href="#{request.contextPath}/styles.css" />
     </h:head>
 
@@ -35,30 +36,30 @@
 		<h:form>
 		
 			
-			<p:dataTable var="ghostnet" value="#{ghostnetController.allSavedGhostnets}"  stripedRows="true" styleClass="ghostnet-table">
+			<p:dataTable var="ghostnet" value="#{ghostnetController.allSavedGhostnets}" styleClass="ghostnet-table">
 			
-				<p:column>
+				<p:column style="width: 22%"> 
     				<f:facet name="header">Gesichtet am</f:facet>
-    				<p:outputLabel value="#{ghostnet.reportedAt}" pattern="dd.MM.yyyy">
+    				<p:outputLabel value="#{ghostnet.reportedAt}">
     				</p:outputLabel>
 				</p:column>
 			
-				<p:column>
-					<f:facet name="header">Latitude</f:facet>
+				<p:column style="width: 22%">
+					<f:facet name="header">Breitengrad</f:facet>
 					<p:outputLabel value="#{ghostnet.latitude}"/>
 				</p:column>
 			
-				<p:column>
-					<f:facet name="header">Longitude</f:facet>
+				<p:column style="width: 22%">
+					<f:facet name="header">Längengrad</f:facet>
 					<p:outputLabel value="#{ghostnet.longitude}"/>
 				</p:column>
 			
-				<p:column>
-					<f:facet name="header">Größe</f:facet>
+				<p:column style="width: 12%">
+					<f:facet name="header">Größe in m²</f:facet>
 					<p:outputLabel value="#{ghostnet.size}"/>
 				</p:column>
 		
-				<p:column>
+				<p:column style="width: 22%">
 					<f:facet name="header">Status</f:facet>
 					
 					<div class="status-text">
@@ -73,7 +74,8 @@
 						rendered="#{ghostnet.assignedTo == null}"
 	                    action="#{ghostnetController.assignToUser(ghostnet)}"
 	                    update="@form" 
-	                    styleClass="rounded-button bergen-button"/>
+	                    styleClass="rounded-button bergen-button"
+	                    />
 					
 					
 					<p:commandButton 
@@ -81,14 +83,17 @@
 						rendered="#{ghostnet.assignedTo == loginController.currentUser and ghostnet.status == 'BERGUNG_BEVORSTEHEND'}"
 	                    action="#{ghostnetController.markAsRecovered(ghostnet)}"
 	                    update="@form"
-						styleClass="rounded-button geborgen-button" />
+						styleClass="rounded-button geborgen-button"
+						/>
 						
 					
-					<p:commandButton  value="Verschollen" 
+					<p:commandButton  
+						value="Verschollen" 
 						rendered="#{ghostnet.assignedTo == loginController.currentUser and ghostnet.status == 'BERGUNG_BEVORSTEHEND'}"
 	                    action="#{ghostnetController.markAsLost(ghostnet)}"
 	                    update="@form"
-						styleClass="rounded-button verschollen-button" />
+						styleClass="rounded-button verschollen-button"
+						/>
 						
 					
 					 <p:commandButton 
@@ -98,7 +103,8 @@
     					update="@form"
 					 	id="basic" 
 					 	type="button"
-					 	styleClass="kontakt-button"/>
+					 	styleClass="kontakt-button"
+					 	/>
 					 	
         				<p:overlayPanel for="basic" style="width:350px">
         				
