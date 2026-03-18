@@ -1,19 +1,11 @@
 package com.project;
 
-import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
-import jakarta.faces.component.UIComponent;
-import jakarta.faces.component.UIInput;
 import jakarta.faces.context.FacesContext;
-import jakarta.faces.event.AbortProcessingException;
-import jakarta.faces.event.ComponentSystemEvent;
-import jakarta.faces.validator.ValidatorException;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -28,9 +20,7 @@ public class GhostnetController implements Serializable {
     private GhostnetDAO ghostnetDAO;
 	@Inject
 	private LoginController loginController;
-	
 	private Ghostnet ghostnet = new Ghostnet();
-	
 	private List<Ghostnet> allSavedGhostnets;
 	
 	
@@ -75,16 +65,14 @@ public class GhostnetController implements Serializable {
 		ghostnet = new Ghostnet(); // Formular wird wieder auf 0 zuürckgesetzt
 	}
 	
+	
+	//funktioniert momentan noch nicht - für eine spätere Version
 	public void removeGhostnet(Ghostnet g) {
 		ghostnetDAO.removeGhostnet(g);
-		allSavedGhostnets = ghostnetDAO.findAll(); //Methode von GhostnetDAO zum Entfernen eines bestimmten Ghostnets (g)
+		allSavedGhostnets = ghostnetDAO.findAll();
 		
 	}
-	
-	public void loadGhostnetlist() {
-		allSavedGhostnets = ghostnetDAO.findAll();
-	}
-	
+
 	
 	
 	

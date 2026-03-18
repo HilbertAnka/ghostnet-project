@@ -24,11 +24,5 @@ public class IndexController implements Serializable {
 		  return "dashboard";
 	  }
 	  
-	  public String registerUser() {
-		  return "welcome";
-	  }
-	  
-	
-	  
 	
 }
